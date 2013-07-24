@@ -5,7 +5,7 @@ var _socket = null,
 	tweetList = [];
 $(function() {
 	if(io !== undefined) {
-		_socket = io.connect("/");
+		_socket = io.connect("http://first-iker-demo.herokuapp.com/");
 		_socket.on("new tweet", function(tweet) {
 			newTweet(tweet);
 		});
