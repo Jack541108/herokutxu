@@ -59,7 +59,6 @@ a:hover {
     height: 48px;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    background: url("../img/bird.png") no-repeat center center;
 }
 .tweets a.active {
     width: 44px;
@@ -83,4 +82,5 @@ a:hover {
     filter:alpha(opacity=50);
     -webkit-border-radius: 50%;
     border-radius: 50%;
+    background: url("../img/bird.png") no-repeat center center;
 }
