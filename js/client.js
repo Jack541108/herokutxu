@@ -1,5 +1,5 @@
 var _socket = null,
-    maxTweets = 1000,
+    maxTweets = 400,
     current = 0,
     i = 0,
     reachedLimit = false,
