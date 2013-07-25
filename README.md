@@ -12,7 +12,7 @@ You can read through the [Get Started][1] guide for Node.js
 
 This line will keep you watching the logs of your heroku node application. Remove the `-p web` command if you want a more detailed log
 
-	heroku logs -p web --app first-iker-demo -t
+	heroku logs -p web --app your-app -t
 
 [0]: http://orloxx.github.io/herokutxu
 [1]: https://devcenter.heroku.com/articles/nodejs
