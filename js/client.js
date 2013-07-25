@@ -1,6 +1,7 @@
 var _socket = null,
     maxTweets = 1000,
     current = 0,
+    i = 0,
     reachedLimit = false,
     tweetList = [];
 $(function() {
@@ -45,6 +46,8 @@ function newTweet(tweet) {
     tweetsEle.find("a").removeClass("active");
     tweetsEle.find(".tweet-" + current).addClass("active");
     current++;
+    i++;
+    $(".numTweets").html(i);
     if(current > maxTweets) {
         current = 0;
         reachedLimit = true;
