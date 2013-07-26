@@ -1,0 +1,11 @@
+{
+    "name": "herokutxu",
+    "version": "1.0.0",
+    "description": "This is a simple Node.js and socket.io demo integrated with the Twitter Streaming API deployed in Heroku for learning purposes only.",
+    "author": "Iker Garitaonandia - @ikertxu",
+    "dependencies": {
+        "grunt": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-connect": "latest"
+    }
+}
