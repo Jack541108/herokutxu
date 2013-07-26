@@ -1,5 +1,6 @@
+@github-box: 149px;
 @box-width: 100%;
-@box-height: 100%;
+@box-height: 230px;
 
 .radius(@radius) {
     -webkit-border-radius: @radius;
@@ -36,8 +37,12 @@ a:hover {
         padding: 5px;
     }
     width: @box-width;
+    height: @box-height;
     color: #282d33;
     background: #5da7d1;
+    position: fixed;
+    top: 0;
+    z-index: 2;
 }
 
 .tweets {
@@ -71,5 +76,7 @@ a:hover {
         opacity: 1 !important;
         filter:alpha(opacity=100) !important;
     }
+    position: relative;
     overflow: hidden;
+    margin-top: @box-height;
 }
