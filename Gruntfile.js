@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     // For mobile testing. Change to your private IP.
-                    hostname: "localhost",
+                    hostname: "192.168.1.37",
                     port: 8080,
                     base: "."
                 }
