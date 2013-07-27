@@ -4,8 +4,8 @@
     "description": "This is a simple Node.js and socket.io demo integrated with the Twitter Streaming API deployed in Heroku for learning purposes only.",
     "author": "Iker Garitaonandia - @ikertxu",
     "dependencies": {
-        "grunt": "latest",
-        "grunt-contrib-watch": "latest",
-        "grunt-contrib-connect": "latest"
+        "grunt": "0.4.1",
+        "grunt-contrib-watch": "0.5.1",
+        "grunt-contrib-connect": "0.3.0"
     }
 }

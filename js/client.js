@@ -2,16 +2,18 @@ var _client = new (function() {
     this.init = init;
 
     var _socket = null,
-        _maxTweets = 500,
         _current = 0,
         _numTweets = 0,
         _users = [],
+        _hashtags = {},
         _reachedLimit = false,
-        _tweetList = [];
+        _tweetList = [],
+        _maxTweets = 99,
+        _showGlobes = false;
 
     function init() {
         if(io !== undefined) {
-            _socket = io.connect("http://first-iker-demo.herokuapp.com/");
+            _socket = io.connect("http://first-iker-demo.herokuapp.com:80/");
             _socket.on("new tweet", function(tweet) {
                 newTweet(tweet);
             });
@@ -21,53 +23,89 @@ var _client = new (function() {
                 emitMsj("start stream");
             });
         }
+        $(".btnRefresh").on("click", function() {
+            _charts.drawHashtags(_hashtags);
+        });
+        $(".btnPeople").on("click", function() {
+            $("#tweets").show();
+            _showGlobes = true;
+        });
+        $("#tweets").find(".close").on("click", function() {
+            $("#tweets").hide();
+            _showGlobes = false;
+        });
     }
 
     function newTweet(tweet) {
-        _tweetList[_current] = tweet;
-
-        if(_users.indexOf(tweet.user.screen_name) === -1) {
-            _users.push(tweet.user.screen_name);
+        if(_numTweets === 0) {
+            $(".datetime").html(new Date().toLocaleString());
         }
 
-        var tweetsEle = $(".tweets"),
-            elementHtml = '<a class="tweet-' + _current +
-                '" href="javascript:void(0)" rel="' + _current + '"><img src="' +
-                tweet.user.profile_image_url + '" /></a>';
-        if(!_reachedLimit) {
-            tweetsEle.append(elementHtml);
-            var tweetbox = $(".tweet-" + _current);
-            tweetbox.not(".active").not(".watching").hover(function(){
-                $(this).find("img").stop().animate({ opacity: 1 }, 300);
-            }, function(){
-                $(this).find("img").stop().animate({ opacity: 0.4 }, 300);
-            });
-            tweetbox.on("click", function() {
-                showTweet(_tweetList[$(this).attr("rel")]);
-                tweetsEle.find("a").removeClass("watching");
-                $(this).addClass("watching");
-            });
+        insertUser(tweet);
+        insertHashtag(tweet);
+
+        if(_showGlobes) {
+            printTweetGlobes(tweet);
         }
-        else {
-            tweetsEle.find(".tweet-" + _current).html('<img src="' +
-                tweet.user.profile_image_url + '" />');
-        }
-        tweetsEle.find("a").removeClass("active");
-        tweetsEle.find(".tweet-" + _current).addClass("active");
-        _current++;
+
         _numTweets++;
         $(".numTweets").html(_numTweets);
         $(".numUsers").html(_users.length);
+    }
+
+    function insertUser(tweet) {
+        if(_users.indexOf(tweet.user.screen_name) === -1) {
+            _users.push(tweet.user.screen_name);
+        }
+    }
+
+    function insertHashtag(tweet) {
+        var hashtags = tweet.entities.hashtags;
+        if(hashtags.length) {
+            _.each(hashtags, function(hashtag) {
+                hashtag = hashtag.text.toLowerCase();
+                if(_hashtags[hashtag]) {
+                    _hashtags[hashtag]++;
+                }
+                else {
+                    _hashtags[hashtag] = 1;
+                }
+            });
+        }
+    }
+
+    function printTweetGlobes(tweet) {
+        _tweetList[_current] = tweet;
+        var tweetsEle = $("#tweets").find(".list"),
+            img = '<img src="' + tweet.user.profile_image_url + '" />',
+            link = '<a href="https://twitter.com/' + tweet.user.screen_name +
+                '" target="_blank" rel="' + _current + '">' + img + '</a>',
+            elementHtml = '<div class="tweet-' + _current + '">' + link + '</div>';
+        if(!_reachedLimit) {
+            tweetsEle.append(elementHtml);
+        }
+        else {
+            tweetsEle.find(".tweet-" + _current).html(link);
+        }
+
+        var tweetbox = $(".tweet-" + _current).find("a");
+        tweetbox.not(".active").not(".watching").hover(function(){
+            $(this).find("img").stop().animate({ opacity: 1 }, 300);
+        }, function(){
+            $(this).find("img").stop().animate({ opacity: 0.4 }, 300);
+        });
+        tweetbox.on("click", function() {
+            tweetsEle.find("a").removeClass("watching");
+            $(this).addClass("watching");
+        });
+
+        tweetsEle.find("a").removeClass("active");
+        tweetsEle.find(".tweet-" + _current).find("a").addClass("active");
+        _current++;
         if(_current > _maxTweets) {
             _current = 0;
             _reachedLimit = true;
         }
-    }
-
-    function showTweet(tweet) {
-        $(".screen_name").html(tweet.user.screen_name);
-        $(".link_account").attr("href", "http://twitter.com/" + tweet.user.screen_name);
-        $(".text").html(tweet.text);
     }
 
     function emitMsj(signal, o) {

@@ -1,11 +1,14 @@
 *{margin:0;padding:0;list-style:none}
 body{background:#eee;color:#333;font-family:verdana,arial,sans-serif}
-a{color:#3850a0;text-decoration:none}
-a:hover{color:#3850a0}
-.wrap{width:80%;max-width:960px;margin:0 auto}
-.mensaje{width:100%;height:230px;color:#282d33;background:#5da7d1;position:fixed;top:0;z-index:2}.mensaje p{padding:5px}
-.mensaje p.detail{font-size:.7em}
-.tweets{position:relative;overflow:hidden;margin-top:230px}.tweets a{display:block;float:left;width:48px;height:48px;-webkit-border-radius:50%;border-radius:50%}.tweets a img{width:100%;height:100%;opacity:.5;filter:alpha(opacity=50);background:url("../img/bird.png") no-repeat center center;-webkit-border-radius:50%;border-radius:50%}
-.tweets a.active{width:44px;height:44px;border:2px solid #ef3338 !important}
-.tweets a.watching{width:44px;height:44px;border:2px solid #ef8d3d}
-.tweets a.active img,.tweets a.watching img{opacity:1 !important;filter:alpha(opacity=100) !important}
+h1,p{padding:5px 0}
+.btn{-moz-box-shadow:inset 0 1px 0 0 #bbdaf7;-webkit-box-shadow:inset 0 1px 0 0 #bbdaf7;box-shadow:inset 0 1px 0 0 #bbdaf7;background:-webkit-gradient(linear, left top, left bottom, color-stop(.05, #79bbff), color-stop(1, #378de5));background:-moz-linear-gradient(center top, #79bbff 5%, #378de5 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');background-color:#79bbff;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;border:1px solid #84bbf3;display:inline-block;color:#fff;font-size:15px;font-weight:normal;padding:6px 24px;text-decoration:none;text-shadow:1px 1px 0 #528ecc}
+.btn:hover{background:-webkit-gradient(linear, left top, left bottom, color-stop(.05, #378de5), color-stop(1, #79bbff));background:-moz-linear-gradient(center top, #378de5 5%, #79bbff 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');background-color:#378de5}
+.btn:active{position:relative;top:1px}
+.wrap{width:80%;max-width:800px;margin:0 auto;padding:10px 0}
+#header{width:100%;color:#fff;background:#5da7d1;font-size:1.5em;text-shadow:1px 1px 1px #000;filter:dropshadow(color=#000000, offx=1, offy=1)}
+#nav ul{overflow:hidden}#nav ul li{float:left;margin:0 10px 0 0}
+#tweets{background:#fff;width:480px;height:480px;padding:20px;position:absolute;top:50%;left:50%;margin:-260px 0 0 -260px;-webkit-border-radius:5px;border-radius:5px}#tweets .close{position:absolute;width:24px;height:24px;background:url("../img/close.png") no-repeat;cursor:pointer;top:2px;right:2px}#tweets .close span{display:none}
+#tweets .list{overflow:hidden}#tweets .list div{width:48px;height:48px;float:left}#tweets .list div a{display:block;width:48px;height:48px;-webkit-border-radius:50%;border-radius:50%}#tweets .list div a img{width:100%;height:100%;opacity:.5;filter:alpha(opacity=50);background:url("../img/bird.png") no-repeat center center;-webkit-border-radius:50%;border-radius:50%}
+#tweets .list div a.active{width:44px;height:44px;border:2px solid #ef3338 !important}
+#tweets .list div a.watching{width:44px;height:44px;border:2px solid #ef8d3d}
+#tweets .list div a.active img,#tweets .list div a.watching img{opacity:1 !important;filter:alpha(opacity=100) !important}

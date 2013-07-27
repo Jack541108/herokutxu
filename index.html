@@ -7,29 +7,47 @@
     <meta name="description" content="This is a simple Node.js and socket.io demo integrated with the Twitter Streaming API deployed in Heroku for learning purposes only.">
 
     <link rel="stylesheet" href="css/styles.css"/>
-
-    <script src="http://first-iker-demo.herokuapp.com/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="js/client.js"></script>
-    <script type="text/javascript">
-        $(_client.init);
-    </script>
 </head>
 <body>
 
 <a href="https://github.com/orloxx/herokutxu" target="_blank"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 3" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-<div class="mensaje">
+<div id="header">
     <div class="wrap">
-        <p class="detail">Tweets since page load: <br><span class="numTweets">0</span></p>
-        <p class="detail">Users since page load: <br><span class="numUsers">0</span></p>
-        <p><a class="link_account" href="http://twitter.com/ikertxu" target="_blank">@<span class="screen_name">ikertxu</span></a></p>
-        <p class="text">Hi, shortly it will start appearing tweets in real time, click the pics to see them. The tracking words will be: <br>
-            <span class="tracking">loading words...</span></p>
+        <h1>Real time tweets</h1>
+        <p>Tweets started: <span class="datetime"></span></p>
+        <p>Tweets since page load: <span class="numTweets">0</span></p>
+        <p>Users since page load: <span class="numUsers">0</span></p>
+        <p>Tracking now: <span class="tracking">Loading words...</span></p>
     </div>
 </div>
 
-<div class="tweets wrap"></div>
+<div id="nav" class="wrap">
+    <ul>
+        <li><a class="btn btnRefresh" href="javascript:void(0)">Generate chart</a></li>
+        <li><a class="btn btnPeople" href="javascript:void(0)">See the people</a></li>
+    </ul>
+</div>
+
+<div id="chart" class="wrap">
+    <div class="hashchart"></div>
+</div>
+
+<div id="tweets" style="display: none">
+    <div class="close"><span>Close</span></div>
+    <div class="list"></div>
+</div>
+
+<script src="http://first-iker-demo.herokuapp.com/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/lodash.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-export.js"></script>
+<script type="text/javascript" src="js/client.js"></script>
+<script type="text/javascript" src="js/Charts.js"></script>
+<script type="text/javascript">
+    $(_client.init);
+</script>
 
 </body>
 </html>
