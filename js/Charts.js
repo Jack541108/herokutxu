@@ -12,7 +12,7 @@ var _charts = new (function() {
                 });
             }
         });
-        $("#container").find(".hashchart").highcharts({
+        $("#chart").find(".hashchart").highcharts({
             chart: {
                 type: "column"
             },
