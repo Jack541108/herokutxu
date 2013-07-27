@@ -5,7 +5,7 @@ var _charts = new (function() {
     function drawHashtags(hashtags) {
         var series = [];
         _.each(hashtags, function(count, hashtag) {
-            if(count > 5) {
+            if(count > 25) {
                 series.push({
                     name: hashtag,
                     data: [count]
