@@ -23,9 +23,7 @@ var _client = new (function() {
                 emitMsj("start stream");
             });
         }
-        $(".btnRefresh").on("click", function() {
-            _charts.drawHashtags(_hashtags);
-        });
+        $(".btnRefresh").on("click", updateChart);
         $(".btnPeople").on("click", function() {
             $("#tweets").show();
             _showGlobes = true;
@@ -34,6 +32,16 @@ var _client = new (function() {
             $("#tweets").hide();
             _showGlobes = false;
         });
+        setInterval(updateChart, 10000);
+    }
+
+    function updateChart() {
+        _charts.setMinCount(getMinOccurrence());
+        _charts.drawHashtags(_hashtags);
+    }
+
+    function getMinOccurrence() {
+        return $.trim($("input#minOccurrence").val());
     }
 
     function newTweet(tweet) {

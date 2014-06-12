@@ -1,11 +1,14 @@
 var _charts = new (function() {
 
     this.drawHashtags = drawHashtags;
+    this.setMinCount = setMinCount;
+
+    var MIN_COUNT = 100;
 
     function drawHashtags(hashtags) {
         var series = [];
         _.each(hashtags, function(count, hashtag) {
-            if(count > 25) {
+            if(count > MIN_COUNT) {
                 series.push({
                     name: hashtag,
                     data: [count]
@@ -30,5 +33,9 @@ var _charts = new (function() {
             },
             series: series
         });
+    }
+
+    function setMinCount (count) {
+        MIN_COUNT = parseInt(count, 10) || MIN_COUNT;
     }
 });

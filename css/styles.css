@@ -7,6 +7,8 @@ h1,p{padding:5px 0}
 .wrap{width:80%;max-width:800px;margin:0 auto;padding:10px 0}
 #header{width:100%;color:#fff;background:#5da7d1;font-size:1.5em;text-shadow:1px 1px 1px #000;filter:dropshadow(color=#000000, offx=1, offy=1)}
 #nav ul{overflow:hidden}#nav ul li{float:left;margin:0 10px 0 0;padding:10px 0}
+input{padding:10px;font-size:inherit}
+input#minOccurrence{width:105px;text-align:right}
 #tweets{background:#fff;width:480px;height:480px;padding:20px;position:absolute;top:50%;left:50%;margin:-260px 0 0 -260px;z-index:2;-webkit-border-radius:5px;border-radius:5px;-webkit-box-shadow:1px 1px 4px 0 #000;box-shadow:1px 1px 4px 0 #000}#tweets .close{position:absolute;width:24px;height:24px;background:url("../img/close.png") no-repeat;cursor:pointer;top:2px;right:2px}#tweets .close span{display:none}
 #tweets .list{overflow:hidden}#tweets .list div{width:48px;height:48px;float:left}#tweets .list div a{display:block;width:48px;height:48px;-webkit-border-radius:50%;border-radius:50%}#tweets .list div a img{width:100%;height:100%;opacity:.5;filter:alpha(opacity=50);background:url("../img/bird.png") no-repeat center center;-webkit-border-radius:50%;border-radius:50%}
 #tweets .list div a.active{width:44px;height:44px;border:2px solid #ef3338 !important}
