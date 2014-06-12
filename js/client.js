@@ -32,7 +32,7 @@ var _client = new (function() {
             $("#tweets").hide();
             _showGlobes = false;
         });
-        setInterval(updateChart, 10000);
+        setInterval(updateChart, 30000);
     }
 
     function updateChart() {
