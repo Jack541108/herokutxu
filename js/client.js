@@ -18,8 +18,9 @@ var _client = new (function() {
                 newTweet(tweet);
             });
             _socket.on("connected", function(r) {
-                $("head").find("title").html("Tracking now: " + r.tracking);
-                $(".tracking").html(r.tracking);
+                var tracking = r.tracking.split(",").join(", ");
+                $("head").find("title").html("Tracking now: " + tracking);
+                $(".tracking").html(tracking);
                 emitMsj("start stream");
             });
         }
