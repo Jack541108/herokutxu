@@ -83,8 +83,8 @@ var _map = new (function() {
 
         var self = this;
         this.div_.css({
-            left: sw.x + "px",
-            top: sw.y + "px"
+            left: (sw.x - 25) + "px",
+            top: (sw.y - 25)+ "px"
         });
         this.div_.append($("<div />", {
             "class": "circle"
