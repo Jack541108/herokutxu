@@ -28,9 +28,15 @@ var _client = new (function() {
             $("#tweets").show();
             _showGlobes = true;
         });
+        $(".btnMap").on("click", function () {
+            _map.show();
+        });
         $("#tweets").find(".close").on("click", function() {
             $("#tweets").hide();
             _showGlobes = false;
+        });
+        $("#map").find(".close").on("click", function() {
+            _map.destroy();
         });
         setInterval(updateChart, 30000);
     }
@@ -59,6 +65,10 @@ var _client = new (function() {
         _numTweets++;
         $(".numTweets").html(_numTweets);
         $(".numUsers").html(_users.length);
+
+        if(tweet.geo) {
+            _map.addPoint(tweet.geo.coordinates);
+        }
     }
 
     function insertUser(tweet) {

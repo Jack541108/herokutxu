@@ -39,6 +39,7 @@
     <ul>
         <li><a class="btn btnRefresh" href="javascript:void(0)">Generate Chart</a></li>
         <li><a class="btn btnPeople" href="javascript:void(0)">Watch Live Tweets</a></li>
+        <li><a class="btn btnMap" href="javascript:void(0)">Watch Map</a></li>
     </ul>
     <ul>
         <li>
@@ -57,13 +58,20 @@
     <div class="list"></div>
 </div>
 
+<div id="map" style="display: none">
+    <div class="close"><span>Close</span></div>
+    <div id="map-canvas"></div>
+</div>
+
 <script src="http://first-iker-demo.herokuapp.com/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&iker=js.js"></script>
 <script type="text/javascript" src="js/lodash.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/highcharts-export.js"></script>
-<script type="text/javascript" src="js/client.js"></script>
+<script type="text/javascript" src="js/Map.js"></script>
 <script type="text/javascript" src="js/Charts.js"></script>
+<script type="text/javascript" src="js/client.js"></script>
 <script type="text/javascript">
     $(_client.init);
 </script>
